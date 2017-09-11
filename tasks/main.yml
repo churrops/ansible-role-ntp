@@ -1,0 +1,16 @@
+---
+- name: NTP | Ensure package installed.
+  yum: name=ntp state=present
+  tags:
+    - ntp
+
+- name: NTP | Ensure NTP is running and enabled as configured.
+  service: name=ntpd state=started enabled=yes
+  tags:
+    - ntp
+
+- name: NTP | Ensude ntp.conf file
+  copy: src=files/ntp.conf dest=/etc/ntp.conf
+  notify: restart ntp
+  tags:
+    - ntp
