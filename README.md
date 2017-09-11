@@ -1,0 +1,2 @@
+# ansible-role-ntp
+--- - name: Apply common configuration to all nodes   hosts: all   remote_user: root    roles:     - common
